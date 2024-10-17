@@ -10,12 +10,14 @@ END_VAR
     <Implementation>
       <ST><![CDATA[fbUnit.Initalize(fbLogger);
 fbUnit();
+
 fbLogger.Write('C:/Test.csv');
 ]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
       <LineId Id="2" Count="0" />
       <LineId Id="66" Count="0" />
+      <LineId Id="75" Count="0" />
       <LineId Id="69" Count="0" />
       <LineId Id="48" Count="0" />
     </LineIds>
