@@ -1,4 +1,31 @@
-# 프로그램 구조
+# 프로그램 사용방법
+
+1. 로그파일 경로를 아래 위치에 입력합니다.
+
+ ![image](https://github.com/user-attachments/assets/7e973b7a-c8b5-4385-aea6-832270fec625)
+  
+
+
+
+</br>
+</br>
+</br>
+
+   
+2. 버튼을 1초동안 누를시 해당 버튼기능이 동작합니다
+   
+![image](https://github.com/user-attachments/assets/efdadb86-6dfe-484f-ba01-c9b4e403c3a6)
+
+- Generate : 2개 제품 생성
+- Forward : 1초마다 전진
+- Backward : 1초마다 후진
+- Stop : 정지
+
+
+ 
+
+
+## 프로그램 구조
 ![image](https://github.com/user-attachments/assets/49727c3a-f4dd-4854-a892-14059fc303f1)
 
 # Function Block
