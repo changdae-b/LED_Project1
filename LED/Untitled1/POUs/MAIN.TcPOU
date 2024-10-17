@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="MAIN" Id="{4df7eff0-0a82-4582-95f2-d69fae3df5f6}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM MAIN
+VAR
+	fbUnit : FB_Unit;
+	fbLogger : FB_Logger;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[fbUnit.Initalize(fbLogger);
+fbUnit();
+fbLogger.Write('C:/Test.csv');
+]]></ST>
+    </Implementation>
+    <LineIds Name="MAIN">
+      <LineId Id="2" Count="0" />
+      <LineId Id="66" Count="0" />
+      <LineId Id="69" Count="0" />
+      <LineId Id="48" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
