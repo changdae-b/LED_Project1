@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_Unit" Id="{69683204-5b7b-42cd-b701-e61dc4d40a10}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_Unit
+VAR
+	step : (idle, init, Forward, Backward, Stop);
+	Command : E_Command;
+	fbTon : TON := (PT:=T#1S);
+	bInit : BOOL;
+	i : INT;
+	
+	
+	(*Visu*)
+	LED : ARRAY[1..10] OF BOOL;
+	LEDLocation : ARRAY[1..2] OF INT;
+	
+	GenerateButton : FB_Button(E_Command.Generate);
+	ForwardButton : FB_Button(E_Command.Forward);
+	BackwardButton : FB_Button(E_Command.Backward);
+	StopButton : FB_Button(E_Command.Stop);
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF NOT bInit THEN
+	RETURN;
+END_IF
+
+IF Command = E_Command.Generate THEN
+	LEDLocation[1] := 1;
+	LEDLocation[2] := 2;
+	step := Init;
+	fbTon(IN := FALSE);
+END_IF
+
+CASE step OF
+	Idle:
+		;
+	init:		
+		fbTon(IN := TRUE);
+		IF fbTon.Q THEN
+			fbTon(IN := FALSE);
+			IF Command = E_Command.Forward THEN
+				step := Forward;
+			ELSIF Command = E_Command.Backward THEN
+				step := Backward;
+			ELSIF Command = E_Command.Stop THEN
+				step := Stop;
+				fbTon(IN := FALSE);
+			END_IF
+		END_IF
+	Forward:
+		FOR i:= 1 TO 2 BY 1 DO
+			IF LEDLocation[i] > 0 AND LEDLocation[i] <= 10 THEN
+				LEDLocation[i] := LEDLocation[i] + 1;
+			ELSE
+				LEDLocation[i] := 0;
+			END_IF 
+		END_FOR
+		fbTon(IN := TRUE);
+		step := Init;
+		
+	Backward:
+		FOR i:= 1 TO 2 BY 1 DO
+			IF LEDLocation[i] > 0 AND LEDLocation[i] < 11 THEN
+				LEDLocation[i] := LEDLocation[i] - 1;
+			ELSE
+				LEDLocation[i] := 0;
+			END_IF 
+		END_FOR
+		fbTon(IN := TRUE);
+		step := Init;
+		
+	Stop:
+		IF Command = E_Command.Forward THEN
+			fbTon(IN := TRUE);
+			IF fbTon.Q THEN
+				step := Forward;
+				fbTon(IN := FALSE);
+			END_IF
+		ELSIF Command = E_Command.Backward THEN
+			fbTon(IN := TRUE);
+			IF fbTon.Q THEN
+				step := Backward;
+				fbTon(IN := FALSE);
+			END_IF
+		END_IF
+END_CASE
+
+TurnOnTwoLED(LEDLocation[1],LEDLocation[2]);
+ForwardButton();
+BackwardButton();
+StopButton();
+GenerateButton();]]></ST>
+    </Implementation>
+    <Method Name="Initalize" Id="{86c290be-4fb0-45cd-a335-5538d682c0c9}">
+      <Declaration><![CDATA[METHOD Initalize : BOOL
+VAR_INPUT
+	iLog : I_Log;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF bInit THEN
+	RETURN;
+END_IF
+ForwardButton.iLog := iLog;
+ForwardButton.refCommand REF= Command;
+BackwardButton.iLog := iLog;
+BackwardButton.refCommand REF= Command;
+StopButton.iLog := iLog;
+StopButton.refCommand REF= Command;
+GenerateButton.iLog := iLog;
+GenerateButton.refCommand REF= Command;
+
+bInit := TRUE;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="TurnOnTwoLED" Id="{b85f6523-b0b1-4239-8ed8-beb4292f26ee}">
+      <Declaration><![CDATA[METHOD PRIVATE TurnOnTwoLED
+VAR_INPUT
+	Location1 : INT;
+	Location2 : INT;
+END_VAR
+VAR
+	i : INT;
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF Location1 = 0 AND Location2 = 0 THEN
+	step := Idle;
+END_IF
+
+FOR i := 1 TO 10 BY 1 DO
+	IF i = Location1 THEN
+		LED[i] := TRUE;
+	ELSIF i = Location2 THEN
+		LED[i] := TRUE;
+	ELSE
+		LED[i] := FALSE;
+	END_IF
+END_FOR]]></ST>
+      </Implementation>
+    </Method>
+    <LineIds Name="FB_Unit">
+      <LineId Id="362" Count="2" />
+      <LineId Id="390" Count="0" />
+      <LineId Id="207" Count="0" />
+      <LineId Id="276" Count="1" />
+      <LineId Id="208" Count="0" />
+      <LineId Id="220" Count="0" />
+      <LineId Id="206" Count="0" />
+      <LineId Id="203" Count="0" />
+      <LineId Id="45" Count="0" />
+      <LineId Id="221" Count="1" />
+      <LineId Id="47" Count="0" />
+      <LineId Id="198" Count="0" />
+      <LineId Id="209" Count="0" />
+      <LineId Id="212" Count="6" />
+      <LineId Id="366" Count="0" />
+      <LineId Id="210" Count="0" />
+      <LineId Id="193" Count="0" />
+      <LineId Id="49" Count="0" />
+      <LineId Id="233" Count="0" />
+      <LineId Id="241" Count="0" />
+      <LineId Id="244" Count="2" />
+      <LineId Id="243" Count="0" />
+      <LineId Id="261" Count="1" />
+      <LineId Id="236" Count="0" />
+      <LineId Id="263" Count="0" />
+      <LineId Id="112" Count="0" />
+      <LineId Id="253" Count="5" />
+      <LineId Id="54" Count="0" />
+      <LineId Id="259" Count="1" />
+      <LineId Id="264" Count="0" />
+      <LineId Id="51" Count="0" />
+      <LineId Id="265" Count="1" />
+      <LineId Id="268" Count="1" />
+      <LineId Id="367" Count="0" />
+      <LineId Id="270" Count="0" />
+      <LineId Id="272" Count="3" />
+      <LineId Id="368" Count="0" />
+      <LineId Id="271" Count="0" />
+      <LineId Id="267" Count="0" />
+      <LineId Id="48" Count="0" />
+      <LineId Id="225" Count="0" />
+      <LineId Id="230" Count="0" />
+      <LineId Id="354" Count="3" />
+    </LineIds>
+    <LineIds Name="FB_Unit.Initalize">
+      <LineId Id="13" Count="3" />
+      <LineId Id="21" Count="0" />
+      <LineId Id="17" Count="0" />
+      <LineId Id="22" Count="0" />
+      <LineId Id="18" Count="0" />
+      <LineId Id="23" Count="0" />
+      <LineId Id="19" Count="0" />
+      <LineId Id="24" Count="0" />
+      <LineId Id="20" Count="0" />
+      <LineId Id="12" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_Unit.TurnOnTwoLED">
+      <LineId Id="33" Count="0" />
+      <LineId Id="30" Count="0" />
+      <LineId Id="34" Count="0" />
+      <LineId Id="31" Count="0" />
+      <LineId Id="15" Count="2" />
+      <LineId Id="19" Count="3" />
+      <LineId Id="18" Count="0" />
+      <LineId Id="13" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

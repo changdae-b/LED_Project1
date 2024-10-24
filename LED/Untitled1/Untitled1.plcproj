@@ -17,6 +17,9 @@
     <LibraryReferences>{e4b81950-6c81-4a67-a4b3-3fb4557b6902}</LibraryReferences>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Class Diagram.TcCD">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="GlobalTextList.TcGTLO">
       <SubType>Code</SubType>
     </Compile>
@@ -24,28 +27,19 @@
       <SubType>Code</SubType>
       <LinkAlways>true</LinkAlways>
     </Compile>
-    <Compile Include="Machine\FB_Machine.TcPOU">
+    <Compile Include="LampUnit\E_Command.TcDUT">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Unit\E_Command.TcDUT">
+    <Compile Include="LampUnit\FB_Button.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Unit\FB_Button.TcPOU">
+    <Compile Include="LampUnit\FB_Unit.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Unit\FB_LED.TcPOU">
+    <Compile Include="Logger\FB_Logger.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Unit\FB_Unit.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Unit\I_Unit.TcIO">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Unit\I_PreviousUnit.TcIO">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Unit\I_NextUnit.TcIO">
+    <Compile Include="Logger\I_Log.TcIO">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="PlcTask.TcTTO">
@@ -61,20 +55,15 @@
       <SubType>Code</SubType>
       <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
     </Compile>
-    <Compile Include="VISUs\VisuUserControl\Unit.TcVIS">
-      <SubType>Code</SubType>
-      <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
-    </Compile>
-    <Compile Include="VISUs\VisuUserControl\UserControlButton.TcVIS">
+    <Compile Include="VISUs\UserControlButton.TcVIS">
       <SubType>Code</SubType>
       <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Logger" />
     <Folder Include="GVLs" />
-    <Folder Include="Machine" />
-    <Folder Include="Unit" />
-    <Folder Include="VISUs\VisuUserControl" />
+    <Folder Include="LampUnit" />
     <Folder Include="VISUs" />
     <Folder Include="POUs" />
   </ItemGroup>

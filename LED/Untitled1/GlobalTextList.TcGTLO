@@ -6,11 +6,6 @@
         <o xml:space="preserve" t="GlobalTextListObject">
           <l n="TextList" t="ArrayList" cet="TextListRow">
             <o>
-              <v n="TextID">"809"</v>
-              <v n="TextDefault">"%n"</v>
-              <l n="LanguageTexts" t="ArrayList" />
-            </o>
-            <o>
               <v n="TextID">"480"</v>
               <v n="TextDefault">"%s"</v>
               <l n="LanguageTexts" t="ArrayList" />
@@ -23,36 +18,6 @@
             <o>
               <v n="TextID">"146"</v>
               <v n="TextDefault">"Log"</v>
-              <l n="LanguageTexts" t="ArrayList" />
-            </o>
-            <o>
-              <v n="TextID">"599"</v>
-              <v n="TextDefault">"Receive Able"</v>
-              <l n="LanguageTexts" t="ArrayList" />
-            </o>
-            <o>
-              <v n="TextID">"297"</v>
-              <v n="TextDefault">"Receive Complete"</v>
-              <l n="LanguageTexts" t="ArrayList" />
-            </o>
-            <o>
-              <v n="TextID">"69"</v>
-              <v n="TextDefault">"Receive Start"</v>
-              <l n="LanguageTexts" t="ArrayList" />
-            </o>
-            <o>
-              <v n="TextID">"293"</v>
-              <v n="TextDefault">"Send Able"</v>
-              <l n="LanguageTexts" t="ArrayList" />
-            </o>
-            <o>
-              <v n="TextID">"929"</v>
-              <v n="TextDefault">"Send Complete"</v>
-              <l n="LanguageTexts" t="ArrayList" />
-            </o>
-            <o>
-              <v n="TextID">"688"</v>
-              <v n="TextDefault">"Send Start"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
