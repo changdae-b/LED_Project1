@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <Itf Name="I_Unit" Id="{2b4d0f2a-5475-413a-bcd4-ca9c94d521d2}">
+    <Declaration><![CDATA[INTERFACE I_Unit EXTENDS I_NextUnit, I_PreviousUnit
+]]></Declaration>
+    <Property Name="FirstLED" Id="{3b77b5c1-54b4-40e9-bcf7-797241834d68}">
+      <Declaration><![CDATA[PROPERTY FirstLED : BOOL]]></Declaration>
+      <Get Name="Get" Id="{d03fbb06-2669-4e9e-b5fc-7a55edf2d8cc}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Get>
+    </Property>
+    <Property Name="isStopped" Id="{a90f21bf-9f26-4ea5-8af3-324321f5e5a0}">
+      <Declaration><![CDATA[PROPERTY isStopped : BOOL]]></Declaration>
+      <Get Name="Get" Id="{14c0df1c-4661-4a8d-88e2-6b98a9746889}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Get>
+    </Property>
+    <Property Name="LastLED" Id="{f7a6502f-a1e3-48c4-9762-5c65b801c892}">
+      <Declaration><![CDATA[PROPERTY LastLED : BOOL]]></Declaration>
+      <Get Name="Get" Id="{3c4ae6ac-f481-45e9-9f59-f4bf6c0f6942}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Get>
+    </Property>
+  </Itf>
+</TcPlcObject>

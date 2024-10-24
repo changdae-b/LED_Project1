@@ -3,7 +3,9 @@
   <GVL Name="gCONSTANT" Id="{4a691510-55c1-4e8d-ac93-7012a8cc4c0a}">
     <Declaration><![CDATA[//{attribute 'qualified_only'}
 VAR_GLOBAL CONSTANT
-	MAX_LOG_INDEX : INT := 10;
+	MAX_UNIT_NUMBER : BYTE := 9;
+//	MIN_UNIT_NUMBER_STRING : STRING := '1';
+//	MAX_UNIT_NUMBER_STRING : STRING := BYTE_TO_STRING(MAX_UNIT_NUMBER);
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>
